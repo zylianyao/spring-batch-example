@@ -1,0 +1,1 @@
+java -classpath "target/dependency/*;target/spring-batch-example-1.0.jar" org.springframework.batch.core.launch.support.CommandLineJobRunner ch02/job/job.xml billJob
