@@ -13,14 +13,16 @@
         <step id="completionPolicyStep">
           <tasklet>
 				<chunk reader="reader" processor="processor" writer="writer" 
-				    chunk-completion-policy="completionPolicy">
+				    chunk-completion-policy="custCompletionPolicy">
          		</chunk>
 		  </tasklet>
         </step>
     </job>
     
     <bean:bean id="completionPolicy" class="org.springframework.batch.repeat.policy.SimpleCompletionPolicy" >
-        <bean:property name="chunkSize" value="5" />
+        <bean:property name="chunkSize" value="5"/>
+    </bean:bean>
+    <bean:bean id="custCompletionPolicy" class="com.juxtapose.example.ch05.policy.CustCompletionPolicy">
     </bean:bean>
     <bean:bean id="reader" class="com.juxtapose.example.ch05.AutoReader" >
         <bean:property name="maxCount" value="100" />
