@@ -21,6 +21,7 @@ public class StopStepListener<T> implements StepExecutionListener, ItemReadListe
 	}
 	
 	public void beforeRead() {
+		System.err.println("isStop --->" + isStop());
 		if(isStop()) {
 			this.stepExecution.setTerminateOnly();
 		}

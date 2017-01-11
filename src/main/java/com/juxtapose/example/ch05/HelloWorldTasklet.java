@@ -3,8 +3,6 @@
  */
 package com.juxtapose.example.ch05;
 
-import java.util.Map;
-
 import org.springframework.batch.core.JobParameter;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.StepContribution;
@@ -12,7 +10,10 @@ import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
 
+import java.util.Map;
+
 /**
+ * 自定义 Tasklet
  * @author bruce.liu(mailto:jxta.liu@gmail.com)
  * 2013-3-19下午03:56:36
  */
@@ -23,10 +24,12 @@ public class HelloWorldTasklet implements Tasklet {
 	 */
 	public RepeatStatus execute(StepContribution contribution,
 			ChunkContext chunkContext) throws Exception {
+		System.err.println("CustTasklet开始");
 		String jobName = chunkContext.getStepContext().getJobName();
 		System.out.println("Execute job :" + jobName +".");
 		JobParameters jobParameters = chunkContext.getStepContext().getStepExecution().getJobParameters();
 		System.out.println("JobParameters:" + jobParameterToString(jobParameters));
+		System.err.println("CustTasklet结束");
 		return RepeatStatus.FINISHED;
 	}
 	
