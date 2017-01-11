@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bean:beans xmlns="http://www.springframework.org/schema/batch"    
-    xmlns:bean="http://www.springframework.org/schema/beans" 
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
-    xmlns:p="http://www.springframework.org/schema/p" 
-    xmlns:tx="http://www.springframework.org/schema/tx"    
-    xmlns:aop="http://www.springframework.org/schema/aop" 
-    xmlns:context="http://www.springframework.org/schema/context"    
-    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+<bean:beans xmlns:bean="http://www.springframework.org/schema/beans"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://www.springframework.org/schema/batch"
+            xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
-    http://www.springframework.org/schema/tx 
-    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
-    http://www.springframework.org/schema/aop 
-    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  
-    http://www.springframework.org/schema/context 
-    http://www.springframework.org/schema/context/spring-context-2.5.xsd
     http://www.springframework.org/schema/batch 
     http://www.springframework.org/schema/batch/spring-batch-2.2.xsd">
     <bean:import resource="classpath:ch06/job-context.xml"/>
@@ -34,9 +24,13 @@
             value="classpath:ch06/data/flat/credit-card-bill-201303-complex.csv"/>
         <bean:property name="lineMapper" ref="lineMapper" />
         <bean:property name="encoding" value="UTF-8" />
+        <!-- 跳过的行 【这里指的是跳过有效行（非注释的行）的数量】 -->
         <bean:property name="linesToSkip" value="1"/>
+        <!-- 资源的严格模式，如果文件不存在会报错 -->
         <bean:property name="strict" value="true"/>
+        <!-- 跳过行会进入该回调函数 -->
         <bean:property name="skippedLinesCallback" ref="lineCallbackHandler"/>
+        <!-- 设置注释的标识符 -->
         <bean:property name="comments">
             <bean:list>
                 <bean:value>##</bean:value>
