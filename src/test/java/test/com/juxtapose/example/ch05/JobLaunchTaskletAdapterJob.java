@@ -41,6 +41,7 @@ public class JobLaunchTaskletAdapterJob {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+
 		executeJob("ch05/job/job-step-tasklet.xml", "taskletAdapterJob",
 				new JobParametersBuilder().addDate("date", new Date()));
 	}

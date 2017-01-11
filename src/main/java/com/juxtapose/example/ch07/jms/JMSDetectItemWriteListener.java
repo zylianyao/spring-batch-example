@@ -3,8 +3,8 @@
  */
 package com.juxtapose.example.ch07.jms;
 
-import junit.framework.Assert;
 
+import org.junit.Assert;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.core.StepExecutionListener;

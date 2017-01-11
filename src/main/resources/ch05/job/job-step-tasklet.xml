@@ -70,7 +70,7 @@
         </step>
     </job>
 
-    <!-- 使用代理的方式调用对象中的方法 -->
+    <!-- 使用代理的方式调用对象中的方法 TODO 尝试其他几种 springbatch 提供的适配器 -->
     <bean:bean id="adapter"
 		class="org.springframework.batch.core.step.tasklet.MethodInvokingTaskletAdapter">
         <bean:property name="targetObject" ref="reader"/>

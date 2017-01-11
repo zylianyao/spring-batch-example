@@ -15,6 +15,7 @@ public class RadomExceptionItemProcessor implements ItemProcessor<String, String
 	Random ra = new Random();
 	
 	public String process(String item) throws Exception {
+		//获取当前线程的名称，用来验证是否是多线程执行
 		Thread t = Thread.currentThread();
 		String name = t.getName();
 		int i = ra.nextInt(10);

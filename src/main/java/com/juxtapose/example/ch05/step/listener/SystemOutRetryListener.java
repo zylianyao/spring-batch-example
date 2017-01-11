@@ -28,7 +28,7 @@ public class SystemOutRetryListener implements RetryListener {
 	}
 
 //	/* (non-Javadoc)
-//	 * @see org.springframework.batch.retry.RetryListener#open(org.springframework.batch.retry.RetryContext, org.springframework.batch.retry.RetryCallback)
+//	 * @see org.springframework.retry.RetryListener#open(org.springframework.retry.RetryContext, org.springframework.retry.RetryCallback)
 //	 */
 //	public <T> boolean open(RetryContext context, RetryCallback<T> callback) {
 //		System.out.println("RetryListener.open()");
@@ -36,7 +36,7 @@ public class SystemOutRetryListener implements RetryListener {
 //	}
 //
 //	/* (non-Javadoc)
-//	 * @see org.springframework.batch.retry.RetryListener#close(org.springframework.batch.retry.RetryContext, org.springframework.batch.retry.RetryCallback, java.lang.Throwable)
+//	 * @see org.springframework.retry.RetryListener#close(org.springframework.retry.RetryContext, org.springframework.retry.RetryCallback, java.lang.Throwable)
 //	 */
 //	public <T> void close(RetryContext context, RetryCallback<T> callback,
 //			Throwable throwable) {
@@ -44,7 +44,7 @@ public class SystemOutRetryListener implements RetryListener {
 //	}
 //
 //	/* (non-Javadoc)
-//	 * @see org.springframework.batch.retry.RetryListener#onError(org.springframework.batch.retry.RetryContext, org.springframework.batch.retry.RetryCallback, java.lang.Throwable)
+//	 * @see org.springframework.retry.RetryListener#onError(org.springframework.retry.RetryContext, org.springframework.retry.RetryCallback, java.lang.Throwable)
 //	 */
 //	public <T> void onError(RetryContext context, RetryCallback<T> callback,
 //			Throwable throwable) {

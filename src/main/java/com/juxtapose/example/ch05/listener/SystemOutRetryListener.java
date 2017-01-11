@@ -14,40 +14,19 @@ import org.springframework.retry.RetryListener;
 public class SystemOutRetryListener implements RetryListener {
 	@Override
 	public <T, E extends Throwable> boolean open(RetryContext retryContext, RetryCallback<T, E> retryCallback) {
-		return false;
+		System.out.println("SystemOutRetryListener RetryListener open()");
+
+		//return false; org.springframework.retry.TerminatedRetryException: Retry terminated abnormally by interceptor before first attempt
+		return true;
 	}
 
 	@Override
 	public <T, E extends Throwable> void close(RetryContext retryContext, RetryCallback<T, E> retryCallback, Throwable throwable) {
-
+		System.out.println("SystemOutRetryListener RetryListener close()");
 	}
 
 	@Override
 	public <T, E extends Throwable> void onError(RetryContext retryContext, RetryCallback<T, E> retryCallback, Throwable throwable) {
-
+		System.out.println("SystemOutRetryListener RetryListener onError()");
 	}
-//	/* (non-Javadoc)
-//	 * @see org.springframework.batch.retry.RetryListener#open(org.springframework.batch.retry.RetryContext, org.springframework.batch.retry.RetryCallback)
-//	 */
-//	public <T> boolean open(RetryContext context, RetryCallback<T> callback) {
-//		System.out.println("SystemOutRetryListener.open()");
-//		return true;
-//	}
-//
-//	/* (non-Javadoc)
-//	 * @see org.springframework.batch.retry.RetryListener#close(org.springframework.batch.retry.RetryContext, org.springframework.batch.retry.RetryCallback, java.lang.Throwable)
-//	 */
-//	public <T> void close(RetryContext context, RetryCallback<T> callback,
-//			Throwable throwable) {
-//		System.out.println("SystemOutRetryListener.close()");
-//	}
-//
-//	/* (non-Javadoc)
-//	 * @see org.springframework.batch.retry.RetryListener#onError(org.springframework.batch.retry.RetryContext, org.springframework.batch.retry.RetryCallback, java.lang.Throwable)
-//	 */
-//	public <T> void onError(RetryContext context, RetryCallback<T> callback,
-//			Throwable throwable) {
-//		System.out.println("SystemOutRetryListener.onError()");
-//	}
-
 }

@@ -17,7 +17,7 @@ import org.springframework.retry.backoff.BackOffPolicy;
 public class DefaultBackoffPolicy implements BackOffPolicy {
 
 	/* (non-Javadoc)
-	 * @see org.springframework.batch.retry.backoff.BackOffPolicy#start(org.springframework.batch.retry.RetryContext)
+	 * @see org.springframework.retry.backoff.BackOffPolicy#start(org.springframework.retry.RetryContext)
 	 */
 	public BackOffContext start(RetryContext context) {
 		BackOffContextImpl backOffContext = new BackOffContextImpl(context);
@@ -25,7 +25,7 @@ public class DefaultBackoffPolicy implements BackOffPolicy {
 	}
 
 	/* (non-Javadoc)
-	 * @see org.springframework.batch.retry.backoff.BackOffPolicy#backOff(org.springframework.batch.retry.backoff.BackOffContext)
+	 * @see org.springframework.retry.backoff.BackOffPolicy#backOff(org.springframework.retry.backoff.BackOffContext)
 	 */
 	public void backOff(BackOffContext backOffContext)
 			throws BackOffInterruptedException {
