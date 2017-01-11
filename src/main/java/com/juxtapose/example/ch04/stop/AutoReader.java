@@ -17,7 +17,9 @@ public class AutoReader implements ItemReader<String> {
 	
 	public String read() throws Exception, UnexpectedInputException,
 			ParseException, NonTransientResourceException {
-		return ++count + "";
+		Thread t = Thread.currentThread();
+		String name = t.getName();
+		return "线程---->" + name + "" + (++count) + "";
 	}
 
 }

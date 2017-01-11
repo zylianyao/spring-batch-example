@@ -3,9 +3,9 @@
  */
 package com.juxtapose.example.ch05;
 
-import java.util.Random;
-
 import org.springframework.batch.item.ItemProcessor;
+
+import java.util.Random;
 
 /**
  * @author bruce.liu(mailto:jxta.liu@gmail.com)
@@ -15,8 +15,10 @@ public class RadomExceptionItemProcessor implements ItemProcessor<String, String
 	Random ra = new Random();
 	
 	public String process(String item) throws Exception {
+		Thread t = Thread.currentThread();
+		String name = t.getName();
 		int i = ra.nextInt(10);
-		System.out.println("Process " + item + "; Random i=" + i);
+		System.out.println("线程---->" + name + " Process " + item + "; Random i=" + i);
 		if(i%2 == 0){
 			throw new RuntimeException("make error!");
 		}else{

@@ -18,7 +18,9 @@ public class AutoReader implements ItemReader<String> {
 	
 	public String read() throws Exception, UnexpectedInputException,
 			ParseException, NonTransientResourceException {
-		System.out.println("Read:" + count);
+		Thread t = Thread.currentThread();
+		String name = t.getName();
+		System.out.println("线程---->" + name + " Read:" + count);
 		if(count > maxCount){
 			return null;
 		}else{
