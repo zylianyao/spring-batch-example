@@ -3,6 +3,7 @@
  */
 package com.juxtapose.example.ch05;
 
+import org.apache.log4j.Logger;
 import org.springframework.batch.item.ItemProcessor;
 
 import java.util.Random;
@@ -13,13 +14,14 @@ import java.util.Random;
  */
 public class RadomExceptionItemProcessor implements ItemProcessor<String, String> {
 	Random ra = new Random();
+	private static final Logger logger = Logger.getLogger(RadomExceptionItemProcessor.class);
 	
 	public String process(String item) throws Exception {
 		//获取当前线程的名称，用来验证是否是多线程执行
 		Thread t = Thread.currentThread();
 		String name = t.getName();
 		int i = ra.nextInt(10);
-		System.out.println("线程---->" + name + " Process " + item + "; Random i=" + i);
+		logger.info("Process " + item + "; Random i=" + i);
 		if(i%2 == 0){
 			throw new RuntimeException("make error!");
 		}else{

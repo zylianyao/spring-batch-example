@@ -3,6 +3,7 @@
  */
 package com.juxtapose.example.ch05;
 
+import org.apache.log4j.Logger;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.NonTransientResourceException;
 import org.springframework.batch.item.ParseException;
@@ -15,12 +16,11 @@ import org.springframework.batch.item.UnexpectedInputException;
 public class AutoReader implements ItemReader<String> {
 	private int count = 0;
 	private int maxCount = 30;
-	
+	private static final Logger logger = Logger.getLogger(com.juxtapose.example.ch04.stop.AutoReader.class);
 	public String read() throws Exception, UnexpectedInputException,
 			ParseException, NonTransientResourceException {
-		Thread t = Thread.currentThread();
-		String name = t.getName();
-		System.out.println("线程---->" + name + " Read:" + count);
+		++count;
+		logger.info(count);
 		if(count > maxCount){
 			return null;
 		}else{

@@ -1,10 +1,11 @@
 package com.juxtapose.example.ch06.flat;
 
-import java.io.IOException;
-import java.io.Writer;
-
+import org.apache.log4j.Logger;
 import org.springframework.batch.item.file.FlatFileHeaderCallback;
 import org.springframework.batch.item.file.LineCallbackHandler;
+
+import java.io.IOException;
+import java.io.Writer;
 
 /**
  * 
@@ -13,12 +14,27 @@ import org.springframework.batch.item.file.LineCallbackHandler;
  */
 public class CopyHeaderLineCallbackHandler implements LineCallbackHandler,
 		FlatFileHeaderCallback {
+	private static final Logger logger = Logger.getLogger(CopyHeaderLineCallbackHandler.class);
 	private String header = "";
 
+	/**
+	 * 获取跳过的行的内容
+	 *
+	 * @param line
+	 */
+	@Override
 	public void handleLine(String line) {
-		this.header = line;
+		logger.info("跳过的行--->" + line);
+		this.header = line+ "【跳过】";
 	}
 
+	/**
+	 * 写到文件顶部【内容需要自己控制】
+	 *
+	 * @param writer
+	 * @throws IOException
+	 */
+	@Override
 	public void writeHeader(Writer writer) throws IOException {
 		writer.write(header);
 	}
